@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class PauseManager : MonoBehaviour
 {
     public GameObject pausePanel;
+    public GameObject pauseButton;
     private Board board;
     public bool paused = false;
     public Image soundButton;
     public Sprite musicOnSprite;
     public Sprite musicOffSprite;
     private SoundManager sound;
+
 
     // Start is called before the first frame update
     void Start()
@@ -35,22 +38,27 @@ public class PauseManager : MonoBehaviour
         {
             soundButton.sprite = musicOnSprite;
         }
-        pausePanel.SetActive(false);
+        pausePanel.SetActive(true);
         board = GameObject.FindWithTag("Board").GetComponent<Board>();
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if (paused && !pausePanel.activeInHierarchy)
         {
             pausePanel.SetActive(true);
+            pauseButton.SetActive(true);
             board.currentState = GameState.pause;
         }
+
         if (!paused && pausePanel.activeInHierarchy)
         {
             pausePanel.SetActive(false);
+            pauseButton.SetActive(false);
             board.currentState = GameState.move;
+
         }
     }
 

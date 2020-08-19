@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 114115881905211440}
   - component: {fileID: 114810595009534670}
   m_Layer: 5
-  m_Name: Goal Prefab
+  m_Name: Goal Prefab 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -279,9 +279,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_IgnoreLayout: 0
   m_MinWidth: 80
-  m_MinHeight: 150
-  m_PreferredWidth: 115
-  m_PreferredHeight: 150
+  m_MinHeight: 100
+  m_PreferredWidth: 80
+  m_PreferredHeight: 100
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
