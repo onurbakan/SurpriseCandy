@@ -2,6 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GooglePlayGames;
+using GooglePlayGames.BasicApi;
+using UnityEngine.SocialPlatforms;
+using System.Threading.Tasks;
 
 public class GameStartManager : MonoBehaviour
 {
@@ -18,6 +22,7 @@ public class GameStartManager : MonoBehaviour
 
     void Start()
     {
+        //AuthenticateUser();
         if (index == 1)
         {
             startPanel.SetActive(false);
@@ -31,6 +36,27 @@ public class GameStartManager : MonoBehaviour
             index = 1;
             //Debug.Log("index : " + index);
         }
+
+
+    }
+
+    public void AuthenticateUser()
+    {
+        PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().Build();
+        PlayGamesPlatform.InitializeInstance(config);
+        PlayGamesPlatform.Activate();
+
+        Social.localUser.Authenticate((bool success) =>
+        {
+            if (success == true)
+            {
+                Debug.Log("Logged in to Google");
+            }
+            else
+            {
+                Debug.Log("Unable to sign in to Google");
+            }
+        });
     }
 
     public void PlayGame()
